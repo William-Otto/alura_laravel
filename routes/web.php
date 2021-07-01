@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/series', function () {
+    $series = [
+        'Invencible',
+        'Game Of Thrones',
+    ];
+
+    $html = "<ul>";
+    foreach ($series as $serie) {
+        $html .= "<li>$serie</li>";
+    }
+    $html .= "</ul>";
+
+    echo $html;
+});
