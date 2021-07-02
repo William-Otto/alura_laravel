@@ -13,13 +13,6 @@ class SeriesController extends Controller
             'Tokyo Ghoul',
             'Naruto',            
         ];
-    
-        $html = "<ul>";
-        foreach ($series as $serie) {
-            $html .= "<li>$serie</li>";
-        }
-        $html .= "</ul>";
-    
-        return $html;
+        return view('series.index', compact('series'));
     }
 }
