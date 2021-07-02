@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Http\Requests\SeriesFormRequest;
 use App\services\SerieCreator;
+use App\Models\Season;
+use App\Models\Episode;
 
 class SeriesController extends Controller
 {
@@ -33,7 +35,14 @@ class SeriesController extends Controller
 
     public function destroy (Request $request)
     {
-        $serie = Serie::destroy($request->id);
+        $serie = Serie::find($request->id);
+        $serie->seasons->each(function (Season $season) {
+            $season->episodes->each(function (Episode $episode) {
+                $episode->delete();
+            });
+            $season->delete();
+        });
+        $serie->delete();
 
         $request->session()->flash('message', "Serie deleted successfully.");
 
