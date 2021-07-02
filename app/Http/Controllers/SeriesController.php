@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Serie;
 
 class SeriesController extends Controller
 {
     public function index (Request $request) 
     {
-        $series = [
-            'Invencible',
-            'Game Of Thrones',
-            'Tokyo Ghoul',
-            'Naruto',            
-        ];
+        $series = Serie::all();
+        
         return view('series.index', compact('series'));
     }
 
@@ -25,7 +22,8 @@ class SeriesController extends Controller
     public function store (Request $request) 
     {
         $name = $request->name;
-        $serie = new Serie();
-        $serie->name = $name;
+        $serie = Serie::create($request->all());
+
+        echo "Série com o id {$serie->id} criada. Série {$serie->name}";
     } 
 }

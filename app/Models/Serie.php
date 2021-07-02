@@ -10,4 +10,8 @@ class Serie extends Model
     use HasFactory;
 
     public $timestramps = false;
+
+    protected $fillable = [
+        'name',
+    ];
 }

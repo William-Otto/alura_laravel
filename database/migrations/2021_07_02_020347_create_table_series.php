@@ -13,7 +13,7 @@ class CreateTableSeries extends Migration
      */
     public function up()
     {
-        Schema::create('table_series', function (Blueprint $table) {
+        Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateTableSeries extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_series');
+        Schema::dropIfExists('series');
     }
 }
