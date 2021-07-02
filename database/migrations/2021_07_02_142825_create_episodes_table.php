@@ -14,7 +14,10 @@ class CreateEpisodesTable extends Migration
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('number');
+            $table->integer('season_id');
+            $table->foreign('season_id')->references('id')->on('seasons');
             $table->timestamps();
         });
     }

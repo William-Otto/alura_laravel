@@ -11,6 +11,10 @@ class Season extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['number'];
+
+    public $timestramps = false;
+
     public function episodes ()
     {
         return $this->hasMany(Episode::class );
