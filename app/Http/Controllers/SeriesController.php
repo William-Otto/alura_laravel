@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Serie;
 use App\Http\Requests\SeriesFormRequest;
+use App\services\SerieCreator;
 
 class SeriesController extends Controller
 {
@@ -21,17 +22,9 @@ class SeriesController extends Controller
         return view ('series.create');
     }
 
-    public function store (SeriesFormRequest $request) 
+    public function store (SeriesFormRequest $request, SerieCreator $serieCreator) 
     {   
-        $serie = Serie::create(['name' => $request->name]);
-
-        $seasons_number = $request->seasons_number;
-        for ($i = 1; $i <= $seasons_number; $i++) {
-            $season = $serie->seasons()->create(['number' => $i]);
-            for ($j = 1; $j <= $request->seasons_number; $j++) {
-                $season->episodes()->create(['number' => $j]);
-            }
-        } 
+        $serie = $serieCreator->createSerie($request->name, $request->seasons_number, $request->ep_per_seasons);
 
         $request->session()->flash('message', "Serie {$serie->name} with ID {$serie->id} and their seasons and episodes created successfully.");
 

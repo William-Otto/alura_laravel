@@ -28,8 +28,8 @@
       </div>
 
       <div class="col col-2">
-        <label for="ep_per_season">Episodes each season</label>
-        <input type="number" class="form-control" name="ep_per_season" id="ep_per_season">
+        <label for="ep_per_seasons">Episodes each season</label>
+        <input type="number" class="form-control" name="ep_per_seasons" id="ep_per_seasons">
       </div>
     </div>
     
