@@ -17,17 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series', function () {
-    $series = [
-        'Invencible',
-        'Game Of Thrones',
-    ];
-
-    $html = "<ul>";
-    foreach ($series as $serie) {
-        $html .= "<li>$serie</li>";
-    }
-    $html .= "</ul>";
-
-    return $html;
-});
+Route::get('/series', [App\Http\Controllers\SeriesController::class, 'index']);
