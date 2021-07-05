@@ -24,4 +24,5 @@ Route::post('/series/delete/{id}', [App\Http\Controllers\SeriesController::class
 Route::post('/series/{id}/editName', [App\Http\Controllers\SeriesController::class, 'editName']);
 
 Route::get('/series/{serieId}/seasons', [App\Http\Controllers\SeasonsController::class, 'index']);
+Route::get('/seasons/{seasonId}/episodes',[App\Http\Controllers\EpisodesController::class, 'index']);
 
