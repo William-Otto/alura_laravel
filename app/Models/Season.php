@@ -11,7 +11,9 @@ class Season extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['number'];
+    protected $fillable = [
+        'number',
+    ];
 
     public $timestramps = false;
 
